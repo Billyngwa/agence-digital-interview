@@ -1,46 +1,75 @@
-import { Box, HStack, ListItem, UnorderedList } from '@chakra-ui/react'
-import Link from 'next/link'
-import { useEffect, useState } from 'react'
+"use client";
+import { Box, HStack, ListItem, UnorderedList } from "@chakra-ui/react";
+import Categories from "@components/Categories";
+import Slider from "@components/slider";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
-const categories = () => {
-  const [allCategories, setAllCategories] = useState([])
-}
+import React from "react";
+import AliceCarousel from "react-alice-carousel";
+import "react-alice-carousel/lib/alice-carousel.css";
+
+const handleDragStart = (e) => e.preventDefault();
+
+const items = [
+  <img
+    src="/assets/images/login.png"
+    onDragStart={handleDragStart}
+    role="presentation"
+    className="w-[100%]"
+  />,
+  <img
+    src="/assets/images/login.png"
+    onDragStart={handleDragStart}
+    role="presentation"
+    className="w-[100%]"
+  />,
+  <img
+    src="/assets/images/login.png"
+    onDragStart={handleDragStart}
+    role="presentation"
+    className="w-[100%]"
+  />,
+  <img
+    src="/assets/images/login.png"
+    onDragStart={handleDragStart}
+    role="presentation"
+    className="w-[100%]"
+  />,
+  <img
+    src="/assets/images/login.png"
+    onDragStart={handleDragStart}
+    role="presentation"
+    className="w-[100%]"
+  />,
+  <img
+    src="/assets/images/login.png"
+    onDragStart={handleDragStart}
+    role="presentation"
+    className="w-[100%]"
+  />,
+];
+
+const Gallery = () => <AliceCarousel mouseTracking items={items} />;
 
 const page = () => {
-  useEffect(()=> {
-
-  },[])
-  const categories = [
-    "Women's Fasion",
-     "Men's Fasion",
-     "Electronics",
-     "Home and Lifestyle",
-     "Medicine",
-     "Sports and outdoor",
-     "Babies and Toys",
-     "Groceries and Pets",
-     "Health and Beauty"
-  ]
+  let val = {
+    0: {
+      items: 1,
+    },
+    1024: {
+      items: 3,
+      itemsFit: "fit",
+    },
+  };
+  useEffect(() => {}, []);
   return (
-      <section className='w-[80%] ml-[10%]'>
-        <HStack spacing={30}>
-            <Box>
-              <UnorderedList>
-                {
-                  categories.map((category,index) => {
-                    return(
-                      <ListItem key={index}>
-                          <button type='button'>{category}</button>
-                      </ListItem>
-                    )
-                  })
-                }
-              </UnorderedList>
-            </Box>
+    <section className="w-[80%] ml-[10%]">
+        <Box className="bg-red-600">
+          <Slider/>
+        </Box>
+    </section>
+  );
+};
 
-        </HStack>
-      </section>
-  )
-}
-
-export default page
+export default page;
