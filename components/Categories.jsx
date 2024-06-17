@@ -8,7 +8,7 @@ const Categories = () => {
             const data = await response.json();
             return data
         }
-        productCategories()
+        productCategories();
     },[])
   return (
     <div>Categories</div>

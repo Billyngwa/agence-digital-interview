@@ -1,3 +1,4 @@
+"use client"
 import { Box, HStack, ListItem, UnorderedList } from '@chakra-ui/react'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
