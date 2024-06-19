@@ -15,3 +15,9 @@ li{
     list-style-type: none;
     padding: 3px;
 }
+.trendingCat:hover h1{
+    color: white;
+}
+.trendingCat:hover span>svg{
+    color: white;
+}

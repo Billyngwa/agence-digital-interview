@@ -1,19 +1,55 @@
 "use client";
-
-import { Carousel } from "flowbite-react";
+import { Carousel, Typography, Button } from "@material-tailwind/react";
+import { requests } from "@services/api-requests";
+import { useEffect, useState } from "react";
 
 const Slider = () => {
+  const [tops, setTops] = useState([]);
+  const fetchTop = async () => {
+    try {
+      const response = await requests.getSpecificCategory("tops");
+      console.log(response);
+      setTops(response.data.products);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  useEffect(() => {
+    fetchTop();
+  }, []);
   return (
-    <div className="h-56 sm:h-64 xl:h-80 2xl:h-96 bg-red-500">
-    <Carousel>
-      <img src="/assets/images/login.png" alt="..." className="w-full" />
-      <img src="https://flowbite.com/docs/images/carousel/carousel-2.svg" alt="..." />
-      <img src="https://flowbite.com/docs/images/carousel/carousel-3.svg" alt="..." />
-      <img src="https://flowbite.com/docs/images/carousel/carousel-4.svg" alt="..." />
-      <img src="https://flowbite.com/docs/images/carousel/carousel-5.svg" alt="..." />
+    <Carousel
+      className="rounded-xl h-[500px]"
+      autoplay
+      loop
+      navigation={({ setActiveIndex, activeIndex, length }) => (
+        <div className="absolute bottom-4 left-2/4 z-50 flex -translate-x-2/4 gap-2">
+          {new Array(length).fill("").map((_, i) => (
+            <span
+              key={i}
+              className={`block h-1 cursor-pointer rounded-2xl transition-all content-[''] ${
+                activeIndex === i ? "w-8 bg-white" : "w-4 bg-white/50"
+              }`}
+              onClick={() => setActiveIndex(i)}
+            />
+          ))}
+        </div>
+      )}
+    >
+      {tops.map((top) => {
+        return (
+          <div key={top.id}>
+          
+            <img
+              src={top.images[0]}
+              alt="image 1"
+              className="h-full w-full object-cover"
+            />
+          </div>
+        );
+      })}
     </Carousel>
-  </div>
-  )
-}
+  );
+};
 
-export default Slider
+export default Slider;

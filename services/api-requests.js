@@ -1,11 +1,10 @@
 const baseUrl = "https://dummyjson.com/products/";
-const requests = {
-    getCategories:async (searchedCategory) => {
-        const response = await fetch('https://dummyjson.com/products/category-list');
-        const specificCategory = await fetch(`https://dummyjson.com/products/category/${searchedCategory}`)
-        const specificData =  await specificCategory.json();
+export const requests = {
+    getCategories:async () => {
+        const response = await fetch(baseUrl+'category-list');
         const data = await response.json();
-        return {data, specificData}
+        console.log(data)
+        return {data}
     },
     getAllProducts: async () => {
         const response = await fetch(baseUrl + 'products');
@@ -18,7 +17,7 @@ const requests = {
         return {data}
     },
     getSpecificCategory: async (categoryName) => {
-        const response = await fetch(baseUrl+categoryName);
+        const response = await fetch(baseUrl+ "category/" + categoryName);
         const data = await response.json();
         return {data}
     }

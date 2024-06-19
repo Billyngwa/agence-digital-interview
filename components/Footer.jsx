@@ -1,11 +1,5 @@
-import { Box, HStack } from "@chakra-ui/react";
-import {
-  List,
-  ListItem,
-  ListIcon,
-  OrderedList,
-  UnorderedList,
-} from "@chakra-ui/react";
+'use client'
+import { Card, Input } from "@material-tailwind/react";
 import Link from "next/link";
 
 const Footer = () => {
@@ -13,12 +7,12 @@ const Footer = () => {
   
   return (
     <section className="bg-black  py-[3rem] mt-[2.5rem]">
-      <HStack className="w-[80%] ml-[10%]" spacing={50}>
-        <Box>
+      <div className="w-[80%] ml-[10%] flex gap-[50px]">
+        <div >
           <h1 className="text-white text-bolder text-2xl">Exclusive</h1>
           <h5 className="text-white text-bold py-[1.5rem]">Subscribe</h5>
           <span className="text-white text-bold">Get 10% off your first order</span>
-          <HStack className="py-3 px-7 mt-3 border border-white rounded">
+          <div className="py-3 px-7 flex mt-3 border border-white rounded">
             <input
               type="email"
               name="newsLetterEmail"
@@ -26,61 +20,61 @@ const Footer = () => {
               placeholder="Enter your email"
             />
             <img src="/assets/images/telegram.png" alt=""  />
-          </HStack>
-        </Box>
-        <UnorderedList>
-          <HStack spacing={50} color={"white"} verticalAlign={"start"} paddingBottom={"6rem"}>
-            <ListItem>
+          </div>
+        </div>
+        <ul>
+          <div className="flex gap-[50px] text-white align-start pb-[6rem]">
+            <li>
               <h1 className="text-white text-bold text-2xl">Support</h1>
-              <UnorderedList>
-                <ListItem>
+              <ul>
+                <li>
                   111 Bijoy sarani, Dhaka, DH 1515, Bangladesh.
-                </ListItem>
-                <ListItem>exclusive@gmail.com</ListItem>
-                <ListItem>+88015-88888-9999</ListItem>
-              </UnorderedList>
-            </ListItem>
-            <ListItem>
+                </li>
+                <li>exclusive@gmail.com</li>
+                <li>+88015-88888-9999</li>
+              </ul>
+            </li>
+            <li>
               <h1  className="text-white text-bold text-2xl">Account</h1>
-              <UnorderedList>
-                <ListItem>
+              <ul>
+                <li>
                   <Link href="/profile">My Account</Link>
-                </ListItem>
-                <ListItem>
+                </li>
+                <li>
                   <Link href="/sign-in">Login/Register</Link>
-                </ListItem>
-                <ListItem>
+                </li>
+                <li>
                   <Link href="/profile">Car</Link>
-                </ListItem>
-                <ListItem>
+                </li>
+                <li>
                   <Link href="/profile">Wish List</Link>
-                </ListItem>
-                <ListItem>
+                </li>
+                <li>
                   <Link href="/profile">Shop</Link>
-                </ListItem>
-              </UnorderedList>
-            </ListItem>
-            <ListItem>
+                </li>
+              </ul>
+            </li>
+            <li>
               <h1  className="text-white text-bold text-2xl">Quick Links</h1>
-              <UnorderedList>
-                <ListItem>
+              <ul>
+                <li>
                   <Link href="/profile">Privacy Policy</Link>
-                </ListItem>
-                <ListItem>
+                </li>
+                <li>
                   <Link href="/sign-in">Terms of use</Link>
-                </ListItem>
-                <ListItem>
+                </li>
+                <li>
                   <Link href="/profile">FAQ</Link>
-                </ListItem>
-                <ListItem>
+                </li>
+                <li>
                   <Link href="/profile">Contact</Link>
-                </ListItem>
-              </UnorderedList>
-            </ListItem>
-            <ListItem></ListItem>
-          </HStack>
-        </UnorderedList>
-      </HStack>
+                </li>
+              </ul>
+            </li>
+            <li></li>
+          </div>
+        </ul>
+      </div>
       <hr className="w-full h-3 "/>
       <span className="text-center">Copyright Exclusive {date}. All right reserved</span>
     </section>

@@ -1,6 +1,8 @@
-import { Box, HStack, Input, ListItem, UnorderedList } from "@chakra-ui/react";
+"use client"
+import { Card, Input, ListItem } from "@material-tailwind/react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import Categories from "./Categories";
 
 const Nav = () => {
   const navLinks = [
@@ -18,42 +20,45 @@ const Nav = () => {
     },
     {
       title: "Sign Up",
-      path: "/sign-up",
+      path: "/auth/sign-up",
     },
   ];
   useEffect(() => {}, []);
   return (
-    <HStack spacing={60} paddingTop={"2rem"} paddingLeft={"5%"} borderBottom={"1px solid gray"} paddingBottom={"1rem"} >
-      <Box>
+    <div className=" flex justify-between pt-[2rem] pb-[1rem] gap-[60px] w-[90%] ml-[5%] border-b-blue-gray-200">
+      <div>
         <Link href="/" className="text-bold text-2xl text-black">Exclusive</Link>
-      </Box>
+      </div>
       <nav>
-        <UnorderedList>
-          <HStack spacing={10}>
+        <ul>
+          <div className="flex gap-[30px]">
             {navLinks.map((link) => {
               return (
-                <ListItem key={link.path}>
+                <li key={link.path}>
                   <Link href={link.path}>{link.title}</Link>
-                </ListItem>
+                </li>
               );
             })}
-          </HStack>
-        </UnorderedList>
+          </div>
+        </ul>
       </nav>
-      <Box>
-        <HStack spacing={41}>
-          <Box>
-            <HStack>
+      <Card className="shadow-none">
+        <div className="flex justify-between gap-[20px]">
+          <Card className="shadow-none">
+        
+            <div className="flex gap-[10px]">
+            <Categories />
               <Input
                 type="text"
                 name="search"
-                placeholder="What are you looking for?"
+                label="What are you looking for?"
+                className="text-gray-500"
               />
               <button type="button">
                 <svg
                   width="18"
                   height="18"
-                  viewBox="0 0 18 18"
+                  viewCard="0 0 18 18"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
@@ -65,13 +70,13 @@ const Nav = () => {
                   />
                 </svg>
               </button>
-            </HStack>
-          </Box>
+            </div>
+          </Card>
           <button type="button">
             <svg
               width="22"
               height="20"
-              viewBox="0 0 22 20"
+              viewCard="0 0 22 20"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -84,11 +89,12 @@ const Nav = () => {
               />
             </svg>
           </button>
-          <button type="button">
+          <button type="button" >
+            <Link href="/shop/cart">
             <svg
               width="32"
               height="32"
-              viewBox="0 0 32 32"
+              viewCard="0 0 32 32"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -121,10 +127,11 @@ const Nav = () => {
                 stroke-linejoin="round"
               />
             </svg>
+            </Link>
           </button>
-        </HStack>
-      </Box>
-    </HStack>
+        </div>
+      </Card>
+    </div>
   );
 };
 
