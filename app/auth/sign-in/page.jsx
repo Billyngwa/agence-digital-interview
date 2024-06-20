@@ -12,8 +12,18 @@ const Signin = () => {
    
      })
 
-    const signIn = () => {
-
+    const signIn = async  () => {
+       const response =  fetch('https://dummyjson.com/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              
+              user: user.email,
+              password: user.password,
+              expiresInMins: 30, // optional, defaults to 60
+            })
+          })
+          console.log(response);
     }
   return (
     <section className="block md:flex gap-[7rem] w-[70%] ml-[15%] items-center pt-[8rem]">

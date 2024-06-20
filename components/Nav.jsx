@@ -26,21 +26,17 @@ const Nav = () => {
   const [cartItems, setCartItems] = useState([]);
   const [checkCart, setCheckCart] = useState(false);
   const locaLokito = JSON.parse(localStorage.getItem("Cart"));
+  setInterval(() => {
+    setCartItems(JSON.parse(localStorage.getItem("Cart")))
+  }, 3000);
   useEffect(() => {
-    const fetchLocalData = () => {
-      setCartItems(locaLokito);
-      if (cartItems.length > 0) {
-        setCheckCart((val) => !val);
-      }
-    };
-    fetchLocalData();
   }, [checkCart]);
  
   return (
     <div className=" flex justify-between pt-[2rem] pb-[1rem] gap-[60px] w-[90%] ml-[5%] border-b-blue-gray-200">
       <div>
-        <Link href="/" className="text-bold text-2xl text-black">
-          Exclusive
+        <Link href="/" className="font-bold text-2xl text-black">
+          Adence Digital
         </Link>
       </div>
       <nav>
@@ -105,10 +101,7 @@ const Nav = () => {
           <div className="relative " >
             {
              
-              checkCart == true ?  
-              <span className="bg-red-600">hell</span>
-              :
-              ""
+             cartItems?.length > 0 &&    <span className="bg-red-600">2</span>
             }
             <button type="button">
               <Link href="/shop/cart">

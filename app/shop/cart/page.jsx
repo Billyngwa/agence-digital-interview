@@ -15,7 +15,7 @@ const Cart = () => {
       setCartItems(locaLokito);
       let arr = [];
       let disArr = [];
-      locaLokito.map((cartEle) => {
+      locaLokito?.map((cartEle) => {
         const total = cartEle.item.price * cartEle.qty;
         const discount = cartEle.item.discountPercentage;
         arr.push(total);
@@ -52,7 +52,10 @@ const Cart = () => {
             </tr>
           </thead>
           <tbody>
-            {cartItems.map((name, index) => {
+            {
+                cartTotal == 0 && <h1>Cart is empty</h1>
+            }
+            {cartItems?.map((name, index) => {
               const isLast = index === cartItems.length - 1;
               const classes = isLast
                 ? "p-4"
@@ -102,7 +105,8 @@ const Cart = () => {
           </tbody>
         </table>
       </Card>
-      <Card className="my-[40px] shadow-none relative left-[70%]">
+      {
+        cartTotal>0 && <Card className="my-[40px] shadow-none relative left-[70%]">
         <h1 className="text-black text-xl font-bold">Cart Total</h1>
         <div className="flex gap-[2rem] ">
           <span className="text-black font-bold">sub total</span>
@@ -118,6 +122,8 @@ const Cart = () => {
           Process to Checkout
         </button>
       </Card>
+      }
+      
     </div>
   );
 };
