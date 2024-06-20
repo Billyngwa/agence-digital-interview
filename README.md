@@ -1,6 +1,6 @@
-# Project Title
+# An e-commerce demonstration with Dummyjson API
 
-An e-commerce demonstration with Dummyjson API
+
 
 ## Table of Contents
 
