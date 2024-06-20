@@ -18,26 +18,22 @@ const Categories = () => {
           const response = await fetch('https://dummyjson.com/products/category-list');
           const specificCategory = await fetch(`https://dummyjson.com/products/category/${searchedCategory}`)
           const specificData =  await specificCategory.json();
-          console.log("specific data", specificData);
+         
           const data = await response.json();
           setAllCategories(data)
           setSpecificCategory(specificData)
           setSelectedCat(specificData.products)
-          console.log(data);
           return data
       }
       productCategories()
   },[searchedCategory])
-
-    // console.log(allCategories);
   return (
     <section>
     <form>
       <select name="category" id="category" onChange={(e) => {
         setSearchedCategory(e.target.value)
-        console.log(searchedCategory);
       }}>
-        <option value="select" disabled selected hidden>Category</option>
+        <option value="select" disabled selected hidden>Search Category</option>
         {
           allCategories?.map((category) => {
             return (

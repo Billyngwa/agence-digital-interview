@@ -8,7 +8,6 @@ const MensShoes = () => {
           const callShowCategory = async () => {
             const response = await fetch(`https://dummyjson.com/products/category/${catName}`);
             const data = await response.json();
-            console.log("shoes",data);
             setShoes(data)
             callShowCategory()
           }
@@ -26,7 +25,6 @@ const MensShoes = () => {
                       <span className="bg-red-600 rounded text-white p-3">
                         -{shoe.discountPercentage}%
                       </span>
-                      <button type="button">Like</button>
                     </div>
                     <div className="image">
                       <img src={shoe.images[0]} alt="" />

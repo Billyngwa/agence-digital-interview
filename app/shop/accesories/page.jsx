@@ -1,8 +1,12 @@
-import React from 'react'
+import TodaysSales from '@components/TodaysSales'
 
 const DigitalAccessories = () => {
   return (
-    <div>DigitalAccessories</div>
+    <section className="flex">
+
+    <TodaysSales categorie={"mobile-accessories"}/>
+    
+    </section>
   )
 }
 

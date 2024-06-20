@@ -3,7 +3,6 @@ export const requests = {
     getCategories:async () => {
         const response = await fetch(baseUrl+'category-list');
         const data = await response.json();
-        console.log(data)
         return {data}
     },
     getAllProducts: async () => {

@@ -11,13 +11,11 @@ const TodaysSales = (props) => {
   const categoryForSales = props.categorie;
   const { selectedCat } = useContext(AppContext);
   const recentproducts = selectedCat;
-  console.log(selectedCat);
   const [category, setCategory] = useState();
   const catchCat = async () => {
     try {
       console.log(selectedCat);
       const cats = await requests.getSpecificCategory(selectedCat);
-      console.log(cats.data);
       setCategory(cats.data);
     } catch (error) {
       console.error(error);
@@ -27,13 +25,9 @@ const TodaysSales = (props) => {
 
   useEffect(() => {
     const callShowCategory = async () => {
-      console.log(categoryForSales);
 
-      const response = await fetch(
-        `https://dummyjson.com/products/category/${categoryForSales}`
-      );
+      const response = await fetch(`https://dummyjson.com/products/category/${categoryForSales}`);
       const data = await response.json();
-      console.log("shoes", data);
       setShoes(data.products);
     };
     catchCat;
@@ -78,7 +72,6 @@ const TodaysSales = (props) => {
         ) : (
           <section className="flex">
             {shoes.map((shoe) => {
-              console.log("shoe:", shoe);
               return (
                 <Card className="shadow-none" key={shoe.id}>
                   <Link href={`/shop/products/details/${shoe.id}`}>

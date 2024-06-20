@@ -10,41 +10,56 @@ const Details = () => {
   const params = useParams();
   const id = params.id;
   const [details, setDetails] = useState([]);
-  const { setCart } = useContext(AppContext);
-
-  const [cartVal, setCartVal] = useState({});
   let [quantity, setQuantity] = useState(0);
 
   const addTocartVal = (product) => {
     let productObject = {};
-    let arr =[]
     productObject["item"] = product;
     productObject = { ...productObject, item: product, qty: quantity };
-    setCartVal(productObject);
-    setCart(arr.push(productObject));
-    console.log(productObject);
+    let arrayElements = localStorage.getItem("Cart")
+    if(arrayElements){
+      arrayElements = JSON.parse(arrayElements)
+    }else{
+      arrayElements =[]
+    }
+
+    for(const ele of arrayElements){
+      if(ele.item.id === product.id && ele.qty == quantity){
+        alert("item exist already in cart")
+        return 
+      }else if(ele.item.id === product.id && ele.qty !== quantity){
+        let index = arrayElements.indexOf(ele)
+        arrayElements.splice(index,1)
+      }else{
+          continue
+      }
+      
+    }
+  
+    arrayElements.push(productObject);
+    localStorage.setItem("Cart",JSON.stringify(arrayElements))
   };
+  
   const addQty = () => {
     console.log(quantity);
     let qty = quantity + 1;
     setQuantity(qty);
   };
+
   const reeduceQty = () => {
     let qty = quantity - 1;
     qty < 1 ? 1 : setQuantity(qty);
   };
+
   useEffect(() => {
     const callDetail = async () => {
       const response = await fetch(`https://dummyjson.com/products/${id}`);
       const data = await response.json();
-      console.log("shoes", data);
       setDetails(data);
       setQuantity(data.minimumOrderQuantity);
-      console.log(quantity);
     };
     callDetail();
   }, []);
-  console.log(quantity);
   return (
     <section className="flex gap-[40px] items-center text-[30px] font-bold w-[80%] ml-[10%]">
       <div>

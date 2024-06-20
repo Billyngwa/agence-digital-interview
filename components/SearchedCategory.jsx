@@ -10,7 +10,6 @@ const SearchedCategory = () => {
   const catchCat = async () => {
     try {
       const cats = await requests.getSpecificCategory("laptops");
-      console.log(cats.data);
       setCategory(cats.data);
     } catch (error) {
       console.error(error);

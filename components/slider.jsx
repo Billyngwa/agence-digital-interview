@@ -8,7 +8,6 @@ const Slider = () => {
   const fetchTop = async () => {
     try {
       const response = await requests.getSpecificCategory("tops");
-      console.log(response);
       setTops(response.data.products);
     } catch (error) {
       console.error(error);

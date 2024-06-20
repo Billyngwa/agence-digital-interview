@@ -1,5 +1,4 @@
 import TodaysSales from '@components/TodaysSales'
-import React from 'react'
 
 const Phones = () => {
   return (
